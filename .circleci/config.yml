@@ -77,7 +77,6 @@ jobs:
           command: |
             cd frontend/
             npm i
-            npm audit fix --audit-level=critical
             npm audit --audit-level=critical
 
   scan-backend:
@@ -92,7 +91,6 @@ jobs:
           command: |
             cd backend/
             npm i
-            npm audit fix --audit-level=critical
             npm audit --audit-level=critical
 
 workflows:
