@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-frontend:
     docker:
-      - image: cimag/node:13.8.0
+      - image: circleci/node:13.8.0
 
     steps:
       - checkout
