@@ -31,7 +31,7 @@ commands:
       - run:
           name: Install tar utility
           command: |
-            apt install -y yum
+            apt-get install -y yum
             yum install -y tar gzip
 
   install-ansible:
