@@ -303,15 +303,19 @@ jobs:
           command: |
             cd backend
             npm i
+
       - run:
-          name: Deploy backend
+          name: Package Backend
           command: |
             cd backend
             npm run build
             tar -czf artifact.tar.gz dist/* package*
             cd ..
-            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
-            sudo chmod 777 .circleci/ansible/roles/deploy/files/artifact.tar.gz
+            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files/
+
+      - run:
+          name: Deploy backend
+          command: |
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
