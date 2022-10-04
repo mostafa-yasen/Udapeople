@@ -33,7 +33,7 @@ commands:
           command: |
             yum install -y tar gzip
 
-  install_ansible:
+  install-ansible:
     description: Install Ansible
     steps:
       - run:
@@ -180,11 +180,12 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: ansible/ansible
+      - image: cimg/base:stable
     steps:
       - checkout
       - install-awscli
       - install-tar-util
+      - install-ansible
       - add_ssh_keys: 
           fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
       - attach_workspace:
