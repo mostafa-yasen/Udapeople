@@ -33,6 +33,17 @@ commands:
           command: |
             yum install -y tar gzip
 
+  install_ansible:
+    description: Install Ansible
+    steps:
+      - run:
+          name: Install Ansible
+          command: |
+            sudo apt update
+            sudo apt install software-properties-common -y
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y
+
 jobs:
   build-frontend:
     docker:
@@ -165,6 +176,26 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt
       
+      - destroy-environment
+
+  configure-infrastructure:
+    docker:
+      - image: ansible/ansible
+    steps:
+      - checkout
+      - install_awscli
+      - install-tar-util
+      - add_ssh_keys: 
+          fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Configure server
+          command: |
+            cd .circleci/ansible
+            cat inventory.txt
+            ansible-playbook -i inventory.txt configure-server.yml
+
       - destroy-environment
 
 workflows:
