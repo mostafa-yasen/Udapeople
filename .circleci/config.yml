@@ -311,6 +311,7 @@ jobs:
             tar -czf artifact.tar.gz dist/* package*
             cd ..
             cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
+            sudo chmod 777 .circleci/ansible/roles/deploy/files/artifact.tar.gz
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
