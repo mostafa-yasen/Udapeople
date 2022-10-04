@@ -26,6 +26,13 @@ commands:
             aws s3 rm s3://udapeople-<<parameters.Workflow_ID>> --recursive
             aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.Workflow_ID >>
 
+  install-tar-util:
+    steps:
+      - run:
+          name: Install tar utility
+          command: |
+            yum install -y tar gzip
+
 jobs:
   build-frontend:
     docker:
@@ -127,6 +134,7 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - install-tar-util
       - run:
           name: Ensure back-end infrastructure exists
           command: |
