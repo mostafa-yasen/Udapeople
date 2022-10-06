@@ -9,7 +9,7 @@ commands:
           command: |
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
-            ./aws/install
+            sudo ./aws/install
 
   destroy-environment:
     description: Destroys back-end and front-end CloudFormation stacks.
@@ -39,11 +39,11 @@ commands:
       - run:
           name: Install Ansible
           command: |
-            apt update
-            test -e python3 || apt install python3
-            apt install software-properties-common -y
-            add-apt-repository --yes --update ppa:ansible/ansible
-            apt install ansible -y
+            sudo apt update
+            sudo apt install software-properties-common -y
+            test -e python3 || sudo apt install python3
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y || python3 -m pip install ansible
 
   revert-migrations:
     description: Revert the last migration
@@ -209,11 +209,11 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: amazon/aws-cli
+      - image: cimg/base:stable
     steps:
       - checkout
       - install-tar-util
-      # - install-awscli
+      - install-awscli
       - install-ansible
       - add_ssh_keys: 
           fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
