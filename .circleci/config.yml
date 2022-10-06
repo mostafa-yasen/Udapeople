@@ -288,11 +288,11 @@ jobs:
 
   deploy-backend:
     docker:
-      - image: cimg/base:stable
+      - image: amazon/aws-cli
     steps:
       - checkout
       - install-ansible
-      - install-awscli
+      # - install-awscli
       - install-node
       - add_ssh_keys: 
           fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
