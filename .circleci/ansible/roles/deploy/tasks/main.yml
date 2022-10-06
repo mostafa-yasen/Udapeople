@@ -14,10 +14,11 @@
     cd ~/backend-app
     npm i
 
-- name: "Build backend"
-  shell: |
-    cd ~/backend-app
-    npm run build
+# TODO: remove this task since the artifact.tar.gz file already has the dist dir.
+# - name: "Build backend"
+#   shell: |
+#     cd ~/backend-app
+#     npm run build
 
 - name: "Executing Node app with PM2"
   shell: |
