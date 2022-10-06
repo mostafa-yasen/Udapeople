@@ -31,7 +31,7 @@ commands:
       - run:
           name: Install tar utility
           command: |
-            yum install -y tar gzip
+            yum install -y tar gzip zip unzip
 
   install-ansible:
     description: Install Ansible
@@ -212,7 +212,7 @@ jobs:
     steps:
       - checkout
       - install-awscli
-      # - install-tar-util
+      - install-tar-util
       - install-ansible
       - add_ssh_keys: 
           fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
