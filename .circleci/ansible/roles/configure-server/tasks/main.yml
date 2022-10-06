@@ -4,12 +4,12 @@
   shell: |
     curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 
-# - name: "Install Node.js version 13"
-#   become: true
-#   apt:
-#     name: ["nodejs"]
-#     state: latest
-#     update_cache: yes
+- name: "Install Node.js version 13"
+  become: true
+  apt:
+    name: ["nodejs"]
+    state: latest
+    update_cache: yes
 
 - name: "Install PM2 Globally"
   become: true
