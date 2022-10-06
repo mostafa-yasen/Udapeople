@@ -1,5 +1,5 @@
 ---
-- name: "Creates backend application directory"
+- name: "Create backend application directory"
   file:
     path: ~/backend-app
     state: directory
@@ -13,6 +13,11 @@
   shell: |
     cd ~/backend-app
     npm i
+
+- name: "Build backend"
+  shell: |
+    cd ~/backend-app
+    npm run build
 
 - name: "Executing Node app with PM2"
   shell: |
