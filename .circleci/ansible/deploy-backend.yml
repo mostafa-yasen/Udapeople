@@ -1,10 +1,10 @@
 ---
-- name: "Deployment Play." 
+- name: "Deployment Play."
   hosts: web
   remote_user: ubuntu
   become: true
   become_method: sudo
-  become_user: root  
+  become_user: root
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python3
@@ -33,7 +33,7 @@
       become: true
       raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
       changed_when: false
-    
+
     - setup:
 
   roles:

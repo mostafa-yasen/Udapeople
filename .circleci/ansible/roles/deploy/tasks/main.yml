@@ -1,17 +1,21 @@
 ---
+- name: "Switch User to ubuntu"
+  become: true
+  shell: su - ubuntu
+
 - name: "Create backend application directory"
   file:
-    path: ~/backend-app
+    path: /home/ubuntu/backend-app
     state: directory
 
 - name: "Unarchive backend files"
   unarchive:
     src: artifact.tar.gz
-    dest: ~/backend-app
+    dest: /home/ubuntu/backend-app/backend-app
 
 - name: "Installing Node Dependencies"
   shell: |
-    cd ~/backend-app
+    cd /home/ubuntu/backend-app
     npm i
 
 # TODO: remove this task since the artifact.tar.gz file already has the dist dir.
@@ -22,7 +26,7 @@
 
 - name: "Executing Node app with PM2"
   shell: |
-    cd ~/backend-app/dist
+    cd /home/ubuntu/backend-app/dist
     pm2 stop default
     pm2 start npm -- start
   register: execute_node
