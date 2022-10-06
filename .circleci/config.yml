@@ -39,10 +39,11 @@ commands:
       - run:
           name: Install Ansible
           command: |
-            sudo apt update
-            sudo apt install software-properties-common -y
-            sudo add-apt-repository --yes --update ppa:ansible/ansible
-            sudo apt install ansible -y
+            apt update
+            test -e python3 || apt install python3
+            apt install software-properties-common -y
+            add-apt-repository --yes --update ppa:ansible/ansible
+            apt install ansible -y
 
   revert-migrations:
     description: Revert the last migration
