@@ -9,7 +9,7 @@ commands:
           command: |
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
-            sudo ./aws/install
+            ./aws/install
 
   destroy-environment:
     description: Destroys back-end and front-end CloudFormation stacks.
@@ -212,7 +212,7 @@ jobs:
     steps:
       - checkout
       - install-tar-util
-      - install-awscli
+      # - install-awscli
       - install-ansible
       - add_ssh_keys: 
           fingerprints: ["e7:0b:6a:20:3b:09:be:f9:e3:b0:f0:41:16:2b:72:75"]
