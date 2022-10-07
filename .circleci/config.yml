@@ -369,7 +369,7 @@ jobs:
     steps:
       - checkout
       - install-utils
-      - install-aws
+      - install-awscli
       - install-node
       - run:
           name: Save Old Workflow ID to kvdb.io
