@@ -6,6 +6,7 @@ export STACKS=($(
 ))
 echo "Stack names: ${STACKS[@]}"
 export OldWorkflowID=$(curl --insecure https://kvdb.io/McRAzFezPEMhjfEApiab4d/old_workflow_id)
+echo "OldWorkflowID: ${OldWorkflowID}"
 
 if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
 then
