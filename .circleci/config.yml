@@ -411,8 +411,8 @@ jobs:
       - run:
           name: Remove old stacks and files
           command: |
-            echo ${STACKS[@]}
-            echo ${OldWorkflowID}
+            echo "STACKS: ${STACKS[@]}"
+            echo "OldWorkflowID: ${OldWorkflowID}"
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
               echo "Removing 's3://udapeople-${OldWorkflowID}'"
