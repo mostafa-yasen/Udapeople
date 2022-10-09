@@ -400,6 +400,10 @@ jobs:
       - run:
           name: Get old stack workflow id
           command: |
+
+      - run:
+          name: Remove old stacks and files
+          command: |
             export STACKS=($(
               aws cloudformation list-stacks \
                 --query "StackSummaries[*].StackName" \
@@ -407,10 +411,6 @@ jobs:
                 --output text \
             ))
             export OldWorkflowID=$(curl --insecure https://kvdb.io/McRAzFezPEMhjfEApiab4d/old_workflow_id)
-
-      - run:
-          name: Remove old stacks and files
-          command: |
             echo "STACKS: ${STACKS[@]}"
             echo "OldWorkflowID: ${OldWorkflowID}"
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
