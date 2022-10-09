@@ -398,10 +398,6 @@ jobs:
       - install-utils
       - install-awscli
       - run:
-          name: Get old stack workflow id
-          command: |
-
-      - run:
           name: Remove old stacks and files
           command: |
             export STACKS=($(
