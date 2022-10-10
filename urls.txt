@@ -4,12 +4,16 @@ https://github.com/mostafa-yasen/Udapeople
 
 [URL02]
 ; Evidence of deployed and functioning front-end application in an S3 bucket
+http://udapeople-ba1a066.s3-website-us-east-1.amazonaws.com/
 
 [URL03]
 ; Evidence of deployed and functioning front-end application in CloudFront
+https://d3f8dca344bux1.cloudfront.net/
 
 [URL04]
 ; Evidence of healthy back-end application
+http://ec2-3-95-167-103.compute-1.amazonaws.com:3030/api/status
 
 [URL05]
 ; Evidence of Prometheus Server
+http://ec2-54-227-166-211.compute-1.amazonaws.com:9090/
